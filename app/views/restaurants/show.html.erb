@@ -1,0 +1,24 @@
+<div class="restaurant-details col-sm-8 offset-sm-2">
+    <div class="card">
+      <div class="card-header">
+        Category: <%= @restaurant.category.upcase %>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= @restaurant.name %></h5>
+        <p class="card-text">Address: <%= @restaurant.address %></p>
+        <p class="card-text">Phone: <%= @restaurant.phone_number %></p>
+        <%= link_to new_restaurant_review_path(@restaurant) do %>
+          <button type="button" class="btn btn-primary">Leave a review</button>
+        <% end %>
+      </div>
+    </div>
+    <ul class="list-group">
+  <% @restaurant.reviews.each do |review| %>
+    <li class="list-group-item">
+
+      <% review.rating.times do %> ⭐️ <% end %> <%= review.content %>
+    </li>
+  <% end %>
+</ul>
+
+</div>
